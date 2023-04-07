@@ -8,13 +8,45 @@
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+.blurred {
+        filter: blur(5px);
+      }
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+		border: 3px solid black;
+      }
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 15px;
+        border: 3px solid black;
+        width: 25%;
+        text-align: center;
+      }
+
 html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </style>
 </head>
 <body class="w3-light-grey">
 
+<div id="password-modal" class="modal">
+      <div class="modal-content">
+        <label for="password" ><i class="fa fa-cogs"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter password:&nbsp;&nbsp;</b></label>
+        <input type="password" id="password" name="password" onkeydown="if (event.keyCode == 13) checkPassword()">
+        <button onclick="checkPassword()">&nbsp;&nbsp;Submit</button>
+      </div>
+</div>
+
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1400px;">
+<div id="page-content" class="w3-content w3-margin-top blurred" style="max-width:1400px;">
 
   <!-- The Grid -->
   <div class="w3-row-padding">
@@ -114,6 +146,26 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <a href="https://www.linkedin.com/in/narcis-zaharia/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
   <p>Powered by w3.css Template</p>
 </footer>
+
+
+<script>
+      var modal = document.getElementById("password-modal");
+      var passwordInput = document.getElementById("password");
+      var pageContent = document.getElementById("page-content");
+
+      function checkPassword() {
+        var password = passwordInput.value;
+        if (password == "Narcis1") {
+          modal.style.display = "none";
+          pageContent.classList.remove("blurred");
+        } else {
+          alert("Incorrect password. Please try again.");
+        }
+      }
+
+      modal.style.display = "block";
+    </script>
+
 
 </body>
 </html>
