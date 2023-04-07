@@ -28,7 +28,7 @@
         margin: 15% auto;
         padding: 15px;
         border: 3px solid black;
-        width: auto;
+        width: 50%;
         text-align: center;
       }
 	    input[type=password] {
@@ -43,8 +43,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 <div id="password-modal" class="modal">
       <div class="modal-content">
         <label for="password" ><i class="fa fa-cogs"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter password:&nbsp;&nbsp;</b></label>
-        <input type="password" id="password" name="password" onkeydown="if (event.keyCode == 13) checkPassword()">
-        <button onclick="checkPassword()">Submit</button>
+        <input style="border: 1px solid black; type="password" id="password" name="password" onkeydown="if (event.keyCode == 13) checkPassword()">
+        <button onclick="checkPassword()" style="border: 1px solid black;"}>Submit</button>
       </div>
 </div>
 
