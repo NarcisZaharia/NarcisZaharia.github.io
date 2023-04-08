@@ -41,6 +41,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
 </head>
 <body class="w3-sand">
 
+<!--
 <div id="password-modal" class="modal">
       <div class="modal-content">
         <label for="password" ><i class="fa fa-cogs"></i><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter password:&nbsp;&nbsp;</b></label>
@@ -48,9 +49,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
         <button onclick="checkPassword()" style="border: 1px solid black;"}>Submit</button>
       </div>
 </div>
+-->
 
 <!-- Page Container -->
-<div id="page-content" class="w3-content w3-margin-top blurred" style="max-width:1400px;">
+<div id="page-content" class="w3-content w3-margin-top <!--blurred-->" style="max-width:1400px;">
 
   <!-- The Grid -->
   <div class="w3-row-padding">
@@ -61,9 +63,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
       <div class="w3-white w3-text-grey w3-card-4">
         <div class="w3-display-container">
           <img src="https://media.licdn.com/dms/image/D4D03AQHZJp4z5zLGvQ/profile-displayphoto-shrink_800_800/0/1670879545145?e=1686182400&v=beta&t=fhMxGYP19cS2QHHUhamfl6YyWJkItCCxGpBDRu25Cgc" style="width:100%" alt="Avatar">
-          <!--<div class="w3-display-bottomleft w3-container w3-text-black">
-            <h2>Narcis-Razvan Zaharia</h2>
-          </div>-->
         </div>
         <div class="w3-container">
 		<p style="font-size:20px;"><b>Narcis-Razvan Zaharia</b></p>
@@ -182,30 +181,38 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
   <!-- End Page Container -->
 </div>
 
+<!--Here some display:none-->
 <footer class="w3-container w3-khaki w3-center w3-margin-top">
   <p>To LinkedIn page:</p>
   <a href="https://www.linkedin.com/in/narcis-zaharia/" target="_blank"><i class="fa w3-hover-opacity"><img src="img/linkedin.png" style="width:5.5%" alt="Logolinkedin" ></i></a>
-  <p><button onclick="window.print()" class="w3-Sand w3-round">Save Page as PDF</button></p>
+  <p  style="display:none;"><button onclick="printPage()" class="w3-Sand w3-round">Save Page as PDF</button></p>
   <p>Powered by w3.css Template</p>
-  <a href="http://s11.flagcounter.com/more/44a"><img src="https://s11.flagcounter.com/count/44a/bg_F0E68C/txt_2B2A19/border_CCCCCC/columns_2/maxflags_4/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+  <a href="http://s11.flagcounter.com/more/44a"><img src="https://s11.flagcounter.com/count/44a/bg_F0E68C/txt_2B2A19/border_CCCCCC/columns_2/maxflags_4/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0" style="display:none;"></a>
 </footer>
 
 
- <script>
-      window.onload = function() {
-        var printButton = document.querySelector('button');
+<script>
+      function printPage() {
+        window.print();
+
         if (window.matchMedia) {
           var mediaQueryList = window.matchMedia('print');
           mediaQueryList.addListener(function(mql) {
             if (mql.matches) {
-              printButton.style.display = 'none';
-            } else {
-              printButton.style.display = 'block';
+              window.setTimeout(function() {
+                window.print({
+                  // Additional options for printing
+                  scale: 0.6,
+				  pageRanges: '1',
+                  // You can add more options here as needed
+                });
+              }, 1000); // Wait 1 second for the print dialog to open
             }
           });
         }
-      };
-</script>
+      }
+    </script>
+
 
 <script>
       var modal = document.getElementById("password-modal");
